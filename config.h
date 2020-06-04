@@ -1,13 +1,13 @@
 /* See LICENSE file for copyright and license details. */
 
 /* interval between updates (in ms) */
-const unsigned int interval = 2000;
+const unsigned int interval = 1000;
 
 /* text to show if no value can be retrieved */
 static const char unknown_str[] = "n/a";
 
 /* maximum output string length */
-#define MAXLEN 2048
+#define MAXLEN 4096
 
 /*
  * function            description                     argument (example)
@@ -65,9 +65,11 @@ static const struct arg args[] = {
 	/* function format          argument */
     { netspeed_rx, "[<%sB/s DOWN>] ", "wlo1"},
 
-    { netspeed_tx, "[<%sB/s UP>]  ", "wlo1"},
+    { netspeed_tx, "[<%sB/s UP>] ", "wlo1"},
 
-    { datetime, "%s",  "%R %a %B %d %Y  " },
+    { datetime, "%s",  "%R %a %B %d %Y " },
+	
+	{ hostname, "%s", NULL},
 
-    { battery_perc, "Battery %s % ", "BAT0"},
+    { battery_perc, "Battery %s %% ", "BAT0"},
 };
