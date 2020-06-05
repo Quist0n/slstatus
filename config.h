@@ -7,7 +7,7 @@ const unsigned int interval = 1000;
 static const char unknown_str[] = "n/a";
 
 /* maximum output string length */
-#define MAXLEN 4096
+#define MAXLEN 2048
 
 /*
  * function            description                     argument (example)
@@ -63,13 +63,12 @@ static const char unknown_str[] = "n/a";
  */
 static const struct arg args[] = {
 	/* function format          argument */
-    { netspeed_rx, "[<%sB/s DOWN>] ", "wlo1"},
+    { netspeed_rx, "[%sB/s DOWN] ", "wlo1"},
 
-    { netspeed_tx, "[<%sB/s UP>] ", "wlo1"},
+    { netspeed_tx, "[%sB/s UP] ", "wlo1"},
 
+    { battery_perc, "Battery %s%%", "BAT0"},
+	{ battery_state, "%s", "BAT0"},
     { datetime, "%s",  "%R %a %B %d %Y " },
-	
-	{ hostname, "%s", NULL},
 
-    { battery_perc, "Battery %s %% ", "BAT0"},
 };
