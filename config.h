@@ -63,12 +63,14 @@ static const char unknown_str[] = "n/a";
  */
 static const struct arg args[] = {
 	/* function format          argument */
+	{run_command, "[Vol %4s] ", "amixer sget Master | sed -n 6p | grep -o '[0-9]\\{,4\\}%'"},
     { netspeed_rx, "[%sB/s DOWN] ", "wlo1"},
 
     { netspeed_tx, "[%sB/s UP] ", "wlo1"},
 
-    { battery_perc, "Battery %s%%", "BAT0"},
+    { battery_perc, "Bat %s%%", "BAT0"},
 	{ battery_state, "%s  ", "BAT0"},
+
     { datetime, "%s",  "%R %a %B %d %Y " },
 
 };
