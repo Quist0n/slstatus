@@ -63,11 +63,11 @@ static const char unknown_str[] = "n/a";
  */
 static const struct arg args[] = {
 	/* function format          argument */
-	
+
 	//Show the current volume of the speakers/headphones (Primary output device really)
-	{run_command, "[Vol %4s] ", "amixer sget Master | sed -n 6p | grep -o '[0-9]\\{,4\\}%'"},
+	{ run_command, "[Vol %4s] ", "amixer sget Master |  awk 'NR==6  {print $5 $6}' | sed 's/]\\[/ /g; s/\\[//g; s/\\]//g';"},
 	//Show the currect volume of the microphone
-	{run_command, "[Mic %4s]","amixer sget Capture | sed -n 6p| grep -o '[0-9]\\{,4\\}%'"},
+	{ run_command, "[Mic %4s]","amixer sget Capture |  awk 'NR==5  {print $5 $6}' | sed 's/]\\[/ /g; s/\\[//g; s/\\]//g';"},
 
     { netspeed_rx, "[%sB/s DOWN] ", "wlo1"},
 
