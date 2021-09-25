@@ -57,11 +57,11 @@ dist:
 install: all
 	mkdir -p "$(DESTDIR)$(PREFIX)/bin"
 	cp -f slstatus "$(DESTDIR)$(PREFIX)/bin"
-	rm -f *.o slstatus 
-	chmod 755 "$(DESTDIR)$(PREFIX)/bin/slstatus"
+	rm -f *.o slstatus
+	chmod 700 "$(DESTDIR)$(PREFIX)/bin/slstatus"
 	mkdir -p "$(DESTDIR)$(MANPREFIX)/man1"
 	cp -f slstatus.1 "$(DESTDIR)$(MANPREFIX)/man1"
-	chmod 644 "$(DESTDIR)$(MANPREFIX)/man1/slstatus.1"
+	chmod 600 "$(DESTDIR)$(MANPREFIX)/man1/slstatus.1"
 
 uninstall:
 	rm -f "$(DESTDIR)$(PREFIX)/bin/slstatus"

@@ -62,20 +62,15 @@ static const char unknown_str[] = "n/a";
  * wifi_essid          WiFi ESSID                      interface name (wlan0)
  */
 static const struct arg args[] = {
-	/* function format          argument */
+/* function     format          argument */
 
-	//Show the current volume of the speakers/headphones (Primary output device really)
-	{ run_command, "[Vol %4s] ", "amixer sget Master |  awk 'NR==6  {print $5 $6}' | sed 's/]\\[/ /g; s/\\[//g; s/\\]//g';"},
-	//Show the currect volume of the microphone
-	{ run_command, "[Mic %4s]","amixer sget Capture |  awk 'NR==5  {print $5 $6}' | sed 's/]\\[/ /g; s/\\[//g; s/\\]//g';"},
-
-    { netspeed_rx, "[%sB/s DOWN] ", "wlo1"},
-
-    { netspeed_tx, "[%sB/s UP] ", "wlo1"},
-
-//    { battery_perc, "Bat %s%%", "BAT0"},
-//	  { battery_state, "%s  ", "BAT0"},
-
-    { datetime, "%s",  "%R %a %b %d %Y " },
-
+        //Show the current volume of the speakers/headphones (Primary output device really)
+        { run_command, "[Vol %4s] ", "amixer sget Master |  awk 'NR==6  {print $5 $6}' | sed 's/]\\[/ /g; s/\\[//g; s/\\]//g';"},
+        //Show the currect volume of the microphone
+        { run_command, "[Mic %4s]","amixer sget Capture |  awk 'NR==5  {print $5 $6}' | sed 's/]\\[/ /g; s/\\[//g; s/\\]//g';"},
+        { netspeed_rx, "[%sB/s DOWN] ", "wlo1"},
+        { netspeed_tx, "[%sB/s UP] ", "wlo1"},
+        { battery_perc, "[BAT %s%%", "BAT0"},
+        { battery_state, " %s] ", "BAT0"},
+        { datetime, "%s",  "%R %a %b %d %Y " },
 };
