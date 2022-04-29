@@ -65,9 +65,9 @@ static const struct arg args[] = {
 /* function     format          argument */
 
         //Show the current volume of the speakers/headphones (Primary output device really)
-        { run_command, "[Vol %4s] ", "amixer sget Master |  awk 'NR==6  {print $5 $6}' | sed 's/]\\[/ /g; s/\\[//g; s/\\]//g';"},
+        { run_command, "[Vol %4s] ", "amixer sget Master |  awk 'NR==6  {print \"L\"$5}; NR==7  {print \"R\"$5; print \"State \"$6};' | tr '\n' ' ' | tr -d '[]'"},
         //Show the currect volume of the microphone
-        { run_command, "[Mic %4s]","amixer sget Capture |  awk 'NR==5  {print $5 $6}' | sed 's/]\\[/ /g; s/\\[//g; s/\\]//g';"},
+        { run_command, "[Mic %4s]","amixer sget Capture |  awk 'NR==5  {print $5,$6}' | tr -d '[]'"},
         { netspeed_rx, "[%sB/s DOWN] ", "wlo1"},
         { netspeed_tx, "[%sB/s UP] ", "wlo1"},
         { battery_perc, "[BAT %s%%", "BAT0"},
